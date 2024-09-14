@@ -19,7 +19,7 @@ const Home = ({ initialResult, initialError, initialDomain }) => {
     <div
       className={`flex flex-col items-center justify-center min-h-screen p-8 ${
         result?.validityStatus === undefined
-          ? 'bg-white'
+          ? 'bg-gray-50'
           : result?.validityStatus === 'Valid'
           ? 'bg-green-100'
           : 'bg-red-100'
