@@ -18,6 +18,9 @@ const useSslChecker = (initialDomain, initialResult, initialError) => {
   };
 
   const handleCheck = async () => {
+    if(!domain){
+    return  setError('Please enter domain.');
+    }
     setLoading(true);
     const domainRegex = /^(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+(?:[a-zA-Z]{2,})$/;
     if (domain && domainRegex.test(domain)) {
@@ -34,6 +37,7 @@ const useSslChecker = (initialDomain, initialResult, initialError) => {
     } else {
       setError('Invalid domain format. Please enter a valid domain.');
       setResult(null); // Clear previous results
+      setLoading(false);
     }
   };
 
