@@ -48,31 +48,4 @@ const Home = ({ initialResult, initialError, initialDomain }) => {
   );
 };
 
-// Server-side rendering function
-export async function getServerSideProps(context) {
-  const { domain } = context.query;
-  let initialResult = null;
-  let initialError = null;
-
-  const domainRegex = /^(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+(?:[a-zA-Z]{2,})$/;
-
-  if (domain && domainRegex.test(domain)) {
-    try {
-      initialResult = await fetchSslInfo(domain);
-    } catch (error) {
-      initialError = error.message;
-    }
-  } else {
-    initialError = 'Invalid domain format. Please enter a valid domain.';
-  }
-
-  return {
-    props: {
-      initialResult,
-      initialError,
-      initialDomain: domain || null,
-    },
-  };
-}
-
 export default Home;
