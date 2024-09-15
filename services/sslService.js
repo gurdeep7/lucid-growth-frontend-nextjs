@@ -1,8 +1,9 @@
+import { BACKEND_URL } from '@/config';
 import axios from 'axios';
 
 export const fetchSslInfo = async (domain) => {
   try {
-    const { data } = await axios.post(`http://localhost:3001/api/ssl-info`, { domain });
+    const { data } = await axios.post(`${BACKEND_URL}/api/ssl-info`, { domain });
     return {
       validityStatus: data.validity.valid || 'Unknown',
       expirationDate: data.validity.validTo || 'Unknown',
