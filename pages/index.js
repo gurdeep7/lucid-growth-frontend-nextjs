@@ -11,7 +11,6 @@ async function fetchInitialData() {
 
 export async function getServerSideProps() {
   const { initialDomain, initialResult, initialError } = await fetchInitialData();
-console.log(initialDomain)
   return {
     props: {
       initialDomain,

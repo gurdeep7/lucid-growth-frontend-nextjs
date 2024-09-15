@@ -19,6 +19,7 @@ const useSslChecker = (initialDomain, initialResult, initialError) => {
 
   const handleCheck = async () => {
     if(!domain){
+    setResult(null);
     return  setError('Please enter domain.');
     }
     setLoading(true);
